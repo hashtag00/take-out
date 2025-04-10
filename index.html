@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Will You Go Out With Me?</title>
+  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background: #ffe6f0;
+      margin: 0;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #ff007f;
+    }
+
+    .buttons {
+      margin-top: 30px;
+      position: relative;
+    }
+
+    button {
+      padding: 15px 25px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin: 0 10px;
+      transition: 0.3s;
+    }
+
+    #yes {
+      background-color: #ff69b4;
+      color: white;
+    }
+
+    #no {
+      background-color: #bbb;
+      color: black;
+      position: absolute;
+    }
+
+    #qrcode {
+      margin-top: 50px;
+    }
+
+    p {
+      margin-top: 20px;
+      font-size: 1rem;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <h1>Will you go out with me? 🥺👉👈</h1>
+  <div class="buttons">
+    <button id="yes" onclick="sayYes()">Yes 💖</button>
+    <button id="no">No 🙈</button>
+  </div>
+
+  <div id="qrcode"></div>
+  <p>Scan to view this page anytime 💌</p>
+
+  <script>
+    const noBtn = document.getElementById('no');
+
+    // Move "No" button when hovered
+    noBtn.addEventListener('mouseover', () => {
+      const x = Math.random() * (window.innerWidth - 100);
+      const y = Math.random() * (window.innerHeight - 100);
+      noBtn.style.left = `${x}px`;
+      noBtn.style.top = `${y}px`;
+    });
+
+    function sayYes() {
+      document.body.innerHTML = `
+        <h1>YAY! 💃🕺</h1>
+        <p>Can't wait! You're the best 🥰</p>
+      `;
+    }
+
+    // Generate a QR code pointing to your hosted link
+    const qrLink = "https://yourusername.github.io/ask-her-out"; // Replace with your actual link
+    QRCode.toCanvas(document.getElementById("qrcode"), qrLink, { width: 200 }, function (err) {
+      if (err) console.error(err);
+    });
+  </script>
+</body>
+</html>
